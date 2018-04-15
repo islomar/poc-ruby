@@ -1,7 +1,17 @@
 # poc-ruby
 Time to play a little bit with Ruby and its ecosystem :-)
 
-http://rubykoans.com/
+## General information
+* Last Ruby release (15.04.2018): 2.5.1
+* RVM: Ruby Version Manager
+* IRB: Interactive Ruby Shell
+* Docker: https://hub.docker.com/_/ruby/
+    * Run IRB: `docker run -ti ruby:2.5 irb`
+* TBD
+
+
+## Tutorials
+* http://rubykoans.com/
 
 
 ## Testing
