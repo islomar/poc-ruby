@@ -2,16 +2,22 @@
 Time to play a little bit with Ruby and its ecosystem :-)
 
 ## General information
+* https://www.ruby-lang.org/en/
 * Last Ruby release (15.04.2018): 2.5.1
 * RVM: Ruby Version Manager
 * IRB: Interactive Ruby Shell
 * Docker: https://hub.docker.com/_/ruby/
     * Run IRB: `docker run -ti ruby:2.5 irb`
+* Rake = Ruby make
+    * (https://github.com/ruby/rake)
+    * It runs the Rakefile (~ Makefile)
 * TBD
 
 
 ## Tutorials
 * http://rubykoans.com/
+    * Install `observr` (`watch` failed https://github.com/mynyml/watchr/issues/58) and run `observr ./koans.watchr`
+* https://www.ruby-lang.org/en/documentation/quickstart/
 
 
 ## Testing
