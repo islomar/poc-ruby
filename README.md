@@ -6,12 +6,16 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * Last Ruby release (15.04.2018): 2.5.1
 * RVM: Ruby Version Manager
 * IRB: Interactive Ruby Shell
+* VS Code: installed Ruby extension
 * Docker: https://hub.docker.com/_/ruby/
     * Run IRB: `docker run -ti ruby:2.5 irb`
 * Rake = Ruby make
     * (https://github.com/ruby/rake)
     * It runs the Rakefile (~ Makefile)
-* TBD
+
+## Ruby language
+* `nil` is an object
+* methods: def-end
 
 
 ## Tutorials
