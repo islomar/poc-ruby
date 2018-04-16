@@ -4,11 +4,22 @@ Time to play a little bit with Ruby and its ecosystem :-)
 ## General information
 * https://www.ruby-lang.org/en/
 * Last Ruby release (15.04.2018): 2.5.1
-* RVM: Ruby Version Manager
+* The reference or original implementation of the Ruby programming language is called Matz's Ruby Interpreter, or **MRI** for short.
+* **RVM**: Ruby Version Manager
 * IRB: Interactive Ruby Shell
 * VS Code: installed Ruby extension
 * Docker: https://hub.docker.com/_/ruby/
     * Run IRB: `docker run -ti ruby:2.5 irb`
+* **bundler**
+    * http://bundler.io/
+    * Gem manager
+    * Looks like pip in Python
+    * Installation: `gem install bundler`
+    * Specify your dependencies in a Gemfile in your project's root:
+    * Run `bundle install --binstubs`
+    * `git add Gemfile Gemfile.lock`
+    * If necessary, you can specify that a gem is located at a particular git repository using the :git parameter.
+    * Located at `~/.bundle`
 * Rake = Ruby make
     * (https://github.com/ruby/rake)
     * It runs the Rakefile (~ Makefile)
@@ -40,8 +51,13 @@ Time to play a little bit with Ruby and its ecosystem :-)
 
 ## Testing
 * RSpec
+    * http://rspec.info/
     * Testing Ruby with RSpec:
-        * https://codecast.qualified.io/interaction/58373a35258123054227a7b1
+        * https://codecast.qualified.io/interaction/58373a35258123054227a7b1 (DONE)
+    * Set up the project for running RSpec: `rspec --init`
+    * `bin/rspec --init`: create `.rspec` and `spec/spec_helper.rb`
+    * Run the tests under folder "spec": `bin/rspec format doc`
+* Hexagonal TDD with Ruby and RSpec: https://www.youtube.com/watch?v=XEkR3hQvcIc&feature=youtu.be
 * Capybara
     * Acceptance test framework for web applications http://teamcapybara.github.io/capybara/
 * RackTest:
