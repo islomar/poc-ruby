@@ -16,7 +16,8 @@ Time to play a little bit with Ruby and its ecosystem :-)
 ## Ruby language
 * `nil` is an object
 * methods: def-end
-* every object has an id and a String representation (`to_s`)
+* every object has an id (att `object_id`) and a String representation (`to_s`)
+* every object has a different id (small integers have fixed ids, which is numberx2 + 1)
 
 
 ## Tutorials
