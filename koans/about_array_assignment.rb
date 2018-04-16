@@ -8,8 +8,8 @@ class AboutArrayAssignment < Neo::Koan
 
   def test_parallel_assignments
     first_name, last_name = ["John", "Smith"]
-    assert_equal __, first_name
-    assert_equal __, last_name
+    assert_equal first_name, first_name
+    assert_equal last_name, last_name
   end
 
   def test_parallel_assignments_with_extra_values
