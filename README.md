@@ -20,12 +20,22 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * every object has a different id (small integers have fixed ids, which is numberx2 + 1)
 * Array vs Range classes
 * `shift` retrieve and remove the first item of a list
+* parentheses are not needed for calling a method without parameters
+* Optional parameters: `def hi(name = "World")`
+* Insert a variable in a string with # `puts "Hello #{name.capitalize}!"`
+* Instance variables with @, e.g. `@name`. They are private.
+* For defining public instance variables: `attr_accessor :name`
+* Instantiate a class: `Greeter.new("Pat")`
+* Ruby modules have two roles:
+    1. Grouping similar methods together under a familiar name
+    2. TBD
+
 
 
 ## Tutorials
 * http://rubykoans.com/
     * Install `observr` (`watch` failed https://github.com/mynyml/watchr/issues/58) and run `observr ./koans.watchr`
-* https://www.ruby-lang.org/en/documentation/quickstart/
+* Ruby in 20 minutes: https://www.ruby-lang.org/en/documentation/quickstart/ (DONE, example MegaGreeter.rb)
 
 
 ## Testing
