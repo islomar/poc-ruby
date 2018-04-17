@@ -45,12 +45,11 @@ describe "create whiteboard" do
     end
 
     describe "whiteboard repository" do
+        let (:ny) { Whiteboard.new(name: "NY") }
+        let (:sf) { Whiteboard.new(name: "SF") }
+        let (:repo) { FakeWhiteboardRepo.new() }
+
         it "creates unique IDs for whiteboards when saved" do
-            ny = Whiteboard.new(name: "NY")
-            sf = Whiteboard.new(name: "SF")
-
-            repo = FakeWhiteboardRepo.new()
-
             repo.save(ny)
             repo.save(sf)
 
@@ -60,11 +59,6 @@ describe "create whiteboard" do
         end
 
         it "finds by name" do
-            ny = Whiteboard.new(name: "NY")
-            sf = Whiteboard.new(name: "SF")
-
-            repo = FakeWhiteboardRepo.new()
-
             repo.save(ny)
             repo.save(sf)
 
