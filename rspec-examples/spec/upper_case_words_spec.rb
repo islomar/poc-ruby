@@ -22,6 +22,9 @@ describe '#upper_case_words' do
 	end
 
 	it 'should raise TypeError for non strings' do
-		expect { upper_case_words(123) }.to raise_error(TypeError)
+		def callback()
+			upper_case_words(123)
+		end
+		expect { callback }.to raise_error(TypeError)
 	end
 end
