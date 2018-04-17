@@ -3,10 +3,17 @@ Time to play a little bit with Ruby and its ecosystem :-)
 
 ## General information
 * https://www.ruby-lang.org/en/
+* Better install Ruby with rbenv
+    * https://cbednarski.com/articles/installing-ruby/
 * Last Ruby release (15.04.2018): 2.5.1
 * The reference or original implementation of the Ruby programming language is called Matz's Ruby Interpreter, or **MRI** for short.
 * **gemspec**: http://guides.rubygems.org/specification-reference/
 * **RVM**: Ruby Version Manager
+* **rbenv**
+    * https://github.com/rbenv/rbenv
+    * https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04
+    * rbenv is concerned solely with switching Ruby versions.
+    * Use rbenv to pick a Ruby version for your application and guarantee that your development environment matches production.
 * IRB: Interactive Ruby Shell
 * VS Code: installed Ruby extension
 * Docker: https://hub.docker.com/_/ruby/
