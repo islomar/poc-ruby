@@ -13,3 +13,4 @@ Nevertheless, there are several things that I don't like from these videos:
 ## Video 2: Rails
 * `rails new --skip-active-record --skip-test --skip-spring whiteboard_web`
 * From within whiteboard_web. run `rails s`
+* Instead of `rspec`, run the tests with `bundle exec rspec`
