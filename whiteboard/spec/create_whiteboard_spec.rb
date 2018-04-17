@@ -4,12 +4,13 @@ def create_whiteboard(name:, gui:, repo:)
     elsif repo.find_by_name(name)
         gui.validation_failed(name: :unique)
     else
-        repo.save(Whiteboard.new(name: name))
+        whiteboard = Whiteboard.new(name: name)
+        repo.save(whiteboard)
+        gui.whiteboard_created(whiteboard.id)
     end
 end
 
 describe "create whiteboard" do
-    # require names be unique   ==> UI, Persistence
     # save the whiteboard       ==> Persistence
 
     it "requires name" do
@@ -25,10 +26,17 @@ describe "create whiteboard" do
         expect(gui.spy_validation_errors).to include(name: :unique)
     end
 
+    it "sends an id for the created whiteboard back to the gui" do
+        create_whiteboard(name: "valid name", gui: gui, repo: repo)
+
+        expect(gui.spy_created_whiteboard_id).to be
+    end
+
     let(:gui) { GuiSpy.new }
     let(:repo) { FakeWhiteboardRepo.new }
 
     class Whiteboard
+        attr_accessor :id
         attr_reader :name
 
         def initialize(name:)
@@ -37,6 +45,20 @@ describe "create whiteboard" do
     end
 
     describe "whiteboard repository" do
+        it "creates unique IDs for whiteboards when saved" do
+            ny = Whiteboard.new(name: "NY")
+            sf = Whiteboard.new(name: "SF")
+
+            repo = FakeWhiteboardRepo.new()
+
+            repo.save(ny)
+            repo.save(sf)
+
+            expect(ny.id).to be
+            expect(sf.id).to be
+            expect(ny.id).not_to eq(sf.id)
+        end
+
         it "finds by name" do
             ny = Whiteboard.new(name: "NY")
             sf = Whiteboard.new(name: "SF")
@@ -53,9 +75,14 @@ describe "create whiteboard" do
 
     class GuiSpy
         attr_reader :spy_validation_errors
+        attr_reader :spy_created_whiteboard_id
 
         def validation_failed(errors)
             @spy_validation_errors = errors
+        end
+
+        def whiteboard_created(whiteboard_id)
+            @spy_created_whiteboard_id = whiteboard_id
         end
     end
 
@@ -69,6 +96,8 @@ describe "create whiteboard" do
         end
 
         def save(whiteboard)
+            require "securerandom"
+            whiteboard.id = SecureRandom.uuid
             @whiteboards << whiteboard
         end
     end
