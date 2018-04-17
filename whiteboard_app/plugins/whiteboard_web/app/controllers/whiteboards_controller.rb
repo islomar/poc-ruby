@@ -1,7 +1,7 @@
 class WhiteboardsController < ApplicationController
     def create
         create_whiteboard(
-            name: params[:name],
+            name: params.require(:name),
             gui: self,
             repo: Rails.configuration.whiteboard_repo
         )
