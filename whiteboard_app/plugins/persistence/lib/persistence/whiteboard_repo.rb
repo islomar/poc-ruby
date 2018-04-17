@@ -10,9 +10,9 @@ module Persistence
             record = WhiteboardRecord.find_by_name(name)
 
             if record
-            Whiteboard.new(name: name, id: record.id)
+                Whiteboard.new(name: name, id: record.id)
             else
-            nil
+                nil
             end
         end
     end

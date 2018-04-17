@@ -30,7 +30,8 @@ module WhiteboardWeb
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    require_relative "../../../whiteboard/spec/support/fake_whiteboard_repo.rb"
-    config.whiteboard_repo = FakeWhiteboardRepo.new
+    # require_relative "../../../whiteboard/spec/support/fake_whiteboard_repo.rb"
+    # config.whiteboard_repo = FakeWhiteboardRepo.new
+    config.whiteboard_repo = Persistence::WhiteboardRepo.new
   end
 end
