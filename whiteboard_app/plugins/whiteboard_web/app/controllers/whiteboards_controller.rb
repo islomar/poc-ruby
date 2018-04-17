@@ -8,7 +8,7 @@ class WhiteboardsController < ApplicationController
     end
 
     def whiteboard_created(id)
-        render text: id
+        render plain: id
     end
 
     def validation_failed(errors)

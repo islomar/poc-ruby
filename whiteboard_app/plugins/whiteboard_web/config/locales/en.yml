@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  validations:
+    unique: "%{field} must be unique"
+    required: "%{field} must be provided"
