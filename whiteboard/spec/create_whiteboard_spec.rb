@@ -10,6 +10,32 @@ def create_whiteboard(name:, gui:, repo:)
     end
 end
 
+def whiteboard_repo_contract(repo_class)
+    describe "whiteboard repository" do
+        let (:ny) { Whiteboard.new(name: "NY") }
+        let (:sf) { Whiteboard.new(name: "SF") }
+        let (:repo) { repo_class.new() }
+
+        it "creates unique IDs for whiteboards when saved" do
+            repo.save(ny)
+            repo.save(sf)
+
+            expect(ny.id).to be
+            expect(sf.id).to be
+            expect(ny.id).not_to eq(sf.id)
+        end
+
+        it "finds by name" do
+            repo.save(ny)
+            repo.save(sf)
+
+            expect(repo.find_by_name(ny.name)).to eq ny
+            expect(repo.find_by_name(sf.name)).to eq sf
+        end
+    end
+end
+
+
 describe "create whiteboard" do
     # save the whiteboard       ==> Persistence
 
@@ -44,42 +70,6 @@ describe "create whiteboard" do
         end
     end
 
-    describe "whiteboard repository" do
-        let (:ny) { Whiteboard.new(name: "NY") }
-        let (:sf) { Whiteboard.new(name: "SF") }
-        let (:repo) { FakeWhiteboardRepo.new() }
-
-        it "creates unique IDs for whiteboards when saved" do
-            repo.save(ny)
-            repo.save(sf)
-
-            expect(ny.id).to be
-            expect(sf.id).to be
-            expect(ny.id).not_to eq(sf.id)
-        end
-
-        it "finds by name" do
-            repo.save(ny)
-            repo.save(sf)
-
-            expect(repo.find_by_name(ny.name)).to eq ny
-            expect(repo.find_by_name(sf.name)).to eq sf
-        end
-    end
-
-    class GuiSpy
-        attr_reader :spy_validation_errors
-        attr_reader :spy_created_whiteboard_id
-
-        def validation_failed(errors)
-            @spy_validation_errors = errors
-        end
-
-        def whiteboard_created(whiteboard_id)
-            @spy_created_whiteboard_id = whiteboard_id
-        end
-    end
-
     class FakeWhiteboardRepo
         def initialize()
             @whiteboards = []
@@ -93,6 +83,21 @@ describe "create whiteboard" do
             require "securerandom"
             whiteboard.id = SecureRandom.uuid
             @whiteboards << whiteboard
+        end
+    end
+
+    whiteboard_repo_contract(FakeWhiteboardRepo)
+
+    class GuiSpy
+        attr_reader :spy_validation_errors
+        attr_reader :spy_created_whiteboard_id
+
+        def validation_failed(errors)
+            @spy_validation_errors = errors
+        end
+
+        def whiteboard_created(whiteboard_id)
+            @spy_created_whiteboard_id = whiteboard_id
         end
     end
 end
