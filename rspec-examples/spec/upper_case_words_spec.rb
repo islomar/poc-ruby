@@ -1,4 +1,7 @@
-require 'upper_case_words'
+def upper_case_words(sentence)
+	return sentence.split.map(&:capitalize).join(" ")
+	# return sentence.split.each{|word| word.capitalize!}.join(' ')
+end
 
 describe '#upper_case_words' do
 	it 'should upper case a single world' do
