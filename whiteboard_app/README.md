@@ -12,5 +12,10 @@ Nevertheless, there are several things that I don't like from these videos:
 
 ## Video 2: Rails
 * `rails new --skip-active-record --skip-test --skip-spring whiteboard_web`
-* From within whiteboard_web. run `rails s`
+* From within whiteboard_web, run `rails s`
 * Instead of `rspec`, run the tests with `bundle exec rspec`
+
+## Video 3: ActiveRecord and integration
+* From the web:
+    1. `rake db:create`
+    2. `rake db:migrate`
