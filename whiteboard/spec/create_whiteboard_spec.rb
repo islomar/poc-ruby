@@ -1,14 +1,4 @@
-def create_whiteboard(name:, gui:, repo:)
-    if name.empty?
-        gui.validation_failed(name: :required)
-    elsif repo.find_by_name(name)
-        gui.validation_failed(name: :unique)
-    else
-        whiteboard = Whiteboard.new(name: name)
-        repo.save(whiteboard)
-        gui.whiteboard_created(whiteboard.id)
-    end
-end
+require "whiteboard"
 
 def whiteboard_repo_contract(repo_class)
     describe "whiteboard repository" do
@@ -37,8 +27,6 @@ end
 
 
 describe "create whiteboard" do
-    # save the whiteboard       ==> Persistence
-
     it "requires name" do
         create_whiteboard(name: "", gui: gui, repo: repo)
 
@@ -60,15 +48,6 @@ describe "create whiteboard" do
 
     let(:gui) { GuiSpy.new }
     let(:repo) { FakeWhiteboardRepo.new }
-
-    class Whiteboard
-        attr_accessor :id
-        attr_reader :name
-
-        def initialize(name:)
-            @name = name
-        end
-    end
 
     class FakeWhiteboardRepo
         def initialize()
