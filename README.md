@@ -28,7 +28,7 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * `git add Gemfile Gemfile.lock`
     * If necessary, you can specify that a gem is located at a particular git repository using the :git parameter.
     * Located at `~/.bundle`
-* Rake = Ruby make
+* **Rake** = Ruby make
     * (https://github.com/ruby/rake)
     * It runs the Rakefile (~ Makefile)
 
@@ -56,6 +56,7 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * http://rubykoans.com/
     * Install `observr` (`watch` failed https://github.com/mynyml/watchr/issues/58) and run `observr ./koans.watchr`
 * Ruby in 20 minutes: https://www.ruby-lang.org/en/documentation/quickstart/ (DONE, example MegaGreeter.rb)
+* Sinatra
 
 
 ## Testing
@@ -66,8 +67,17 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * Set up the project for running RSpec: `rspec --init`
     * `bin/rspec --init`: create `.rspec` and `spec/spec_helper.rb`
     * Run the tests under folder "spec": `bin/rspec format doc`
-* Hexagonal TDD with Ruby and RSpec: https://moonmaster9000.github.io/hexagonal_tdd_in_ruby/
-* Testing en Invoice_Me. Cucumber, RSpec, Capybara, Selenium: https://www.youtube.com/watch?v=8ok8q8duvYc
+* Hexagonal TDD with Ruby and RSpec: https://moonmaster9000.github.io/hexagonal_tdd_in_ruby/ (DONE)
+* Testing en Invoice_Me. Cucumber, RSpec, Capybara, Selenium:
+    * https://www.youtube.com/watch?v=8ok8q8duvYc
+    * https://github.com/codingstones/invoice_me
+    * Sinatra, RSpec, Cucumber
+    * `gem install bundler` before running `bundle install`
+    * It uses the gem `dry-validation` for validating data coming from the outside.
+    * gema `vcr` for recording the answer from external services. It uses `webmock`.
+    * `rack-test` for Sinatra testing.
+    * `capybara` for end-to-end tests
+    * `config.ru` looks like the entry point for Sinatra
 * Capybara
     * Acceptance test framework for web applications http://teamcapybara.github.io/capybara/
 * RackTest:
