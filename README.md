@@ -5,6 +5,7 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * https://www.ruby-lang.org/en/
 * Last Ruby release (15.04.2018): 2.5.1
 * The reference or original implementation of the Ruby programming language is called Matz's Ruby Interpreter, or **MRI** for short.
+* **gemspec**: http://guides.rubygems.org/specification-reference/
 * **RVM**: Ruby Version Manager
 * IRB: Interactive Ruby Shell
 * VS Code: installed Ruby extension
@@ -25,6 +26,7 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * It runs the Rakefile (~ Makefile)
 
 ## Ruby language
+* it uses snake case for methods and attributes, like Python
 * `nil` is an object
 * methods: def-end
 * every object has an id (att `object_id`) and a String representation (`to_s`)
@@ -57,7 +59,8 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * Set up the project for running RSpec: `rspec --init`
     * `bin/rspec --init`: create `.rspec` and `spec/spec_helper.rb`
     * Run the tests under folder "spec": `bin/rspec format doc`
-* Hexagonal TDD with Ruby and RSpec: https://www.youtube.com/watch?v=XEkR3hQvcIc&feature=youtu.be
+* Hexagonal TDD with Ruby and RSpec: https://moonmaster9000.github.io/hexagonal_tdd_in_ruby/
+* Testing en Invoice_Me. Cucumber, RSpec, Capybara, Selenium: https://www.youtube.com/watch?v=8ok8q8duvYc
 * Capybara
     * Acceptance test framework for web applications http://teamcapybara.github.io/capybara/
 * RackTest:

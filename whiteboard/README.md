@@ -1,3 +1,5 @@
 # Hexagonal TDD with Ruby
 
-https://moonmaster9000.github.io/hexagonal_tdd_in_ruby/
+Follow these screencasts: https://moonmaster9000.github.io/hexagonal_tdd_in_ruby/
+
+It's not "pure" TDD, but it's OK for learning about Ruby for me :-)
