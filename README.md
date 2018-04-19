@@ -32,6 +32,7 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * (https://github.com/ruby/rake)
     * It runs the Rakefile (~ Makefile)
 
+
 ## Ruby language
 * it uses snake case for methods and attributes, like Python
 * `nil` is an object
@@ -46,10 +47,10 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * Instance variables with @, e.g. `@name`. They are private.
 * For defining public instance variables: `attr_accessor :name`
 * Instantiate a class: `Greeter.new("Pat")`
+* Safe-navigation operator: `provider&.password`
 * Ruby modules have two roles:
     1. Grouping similar methods together under a familiar name
     2. TBD
-
 
 
 ## Tutorials
@@ -57,7 +58,11 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * Install `observr` (`watch` failed https://github.com/mynyml/watchr/issues/58) and run `observr ./koans.watchr`
 * Ruby in 20 minutes: https://www.ruby-lang.org/en/documentation/quickstart/ (DONE, example MegaGreeter.rb)
 * Sinatra
-
+    * http://sinatrarb.com/intro.html
+        * Sinatra tests can be written using any Rack-based testing library or framework. Rack::Test is recommended.
+    * Hello world: https://coderwall.com/p/3k1hsw/hello-world-with-sinatra
+    * TDD and Sinatra: https://rubyplus.com/articles/1881-Sinatra-Beyond-Basics-TDD-using-Sinatra
+    * TDD + Sinatra + Travis + Heroku: https://www.sitepoint.com/build-sinatra-api-using-tdd-heroku-continuous-integration-travis/
 
 ## Testing
 * RSpec
@@ -68,7 +73,8 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * `bin/rspec --init`: create `.rspec` and `spec/spec_helper.rb`
     * Run the tests under folder "spec": `bin/rspec format doc`
 * Hexagonal TDD with Ruby and RSpec: https://moonmaster9000.github.io/hexagonal_tdd_in_ruby/ (DONE)
-* Testing en Invoice_Me. Cucumber, RSpec, Capybara, Selenium:
+* Dani Latorre => Testing en Invoice_Me. Cucumber, RSpec, Capybara, Selenium: (DOING)
+    * https://www.youtube.com/watch?v=iEmBIj95jdI
     * https://www.youtube.com/watch?v=8ok8q8duvYc
     * https://github.com/codingstones/invoice_me
     * Sinatra, RSpec, Cucumber
@@ -76,8 +82,17 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * It uses the gem `dry-validation` for validating data coming from the outside.
     * gema `vcr` for recording the answer from external services. It uses `webmock`.
     * `rack-test` for Sinatra testing.
-    * `capybara` for end-to-end tests
+    * `capybara/cucumber` for end-to-end tests
     * `config.ru` looks like the entry point for Sinatra
+    * `app.rb`: initializations, controllers.
+    * Use of `require_relative`
+    * They don't use `return`
+    * Coverage: SimpleCov, it starts it at spec_helper.rb
+    * Testing
+        * `rspec spec/invoice_me --format documentation`
+        * `AUTH_TOKEN=xxx ORIGIN_ACCOUNT=xxx rake features:e2e`  >> it runs with a headless Chrome
+        * All the tests under `spec` use a fake Cuentica server (VCR cassettes)
+        * The tests under `features` run against the real Cuentica server
 * Capybara
     * Acceptance test framework for web applications http://teamcapybara.github.io/capybara/
 * RackTest:
