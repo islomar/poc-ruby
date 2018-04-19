@@ -61,7 +61,8 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * http://sinatrarb.com/intro.html
         * Sinatra tests can be written using any Rack-based testing library or framework. Rack::Test is recommended.
     * Hello world: https://coderwall.com/p/3k1hsw/hello-world-with-sinatra (DONE)
-    * TDD and Sinatra: https://rubyplus.com/articles/1881-Sinatra-Beyond-Basics-TDD-using-Sinatra (TO DO)
+    * TDD and Sinatra: https://rubyplus.com/articles/1881-Sinatra-Beyond-Basics-TDD-using-Sinatra (DONE)
+        * http://www.virtuouscode.com/2014/07/08/zero-to-smoke-test-with-sinatra/
     * TDD + Sinatra + Travis + Heroku: https://www.sitepoint.com/build-sinatra-api-using-tdd-heroku-continuous-integration-travis/ (TO DO)
 
 ## Testing
@@ -104,3 +105,21 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * Rack provides a minimal, modular, and adaptable interface for developing web applications in Ruby.
     * E.g. Sinatra or Rails are Rack web frameworks.
 * Sinatra
+
+
+## How to create a project
+* Create Gemfile
+* `rspec --init`
+* `bundle`
+* Edit .rspec to include color and format documentation
+* In spec_helper.rb (invoice_me example):
+```
+module SinatraMixin
+  include Rack::Test::Methods
+
+  def app
+    Sinatra::Application
+  end
+end
+```
+* TBD
