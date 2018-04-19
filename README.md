@@ -60,9 +60,9 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * Sinatra
     * http://sinatrarb.com/intro.html
         * Sinatra tests can be written using any Rack-based testing library or framework. Rack::Test is recommended.
-    * Hello world: https://coderwall.com/p/3k1hsw/hello-world-with-sinatra
-    * TDD and Sinatra: https://rubyplus.com/articles/1881-Sinatra-Beyond-Basics-TDD-using-Sinatra
-    * TDD + Sinatra + Travis + Heroku: https://www.sitepoint.com/build-sinatra-api-using-tdd-heroku-continuous-integration-travis/
+    * Hello world: https://coderwall.com/p/3k1hsw/hello-world-with-sinatra (DONE)
+    * TDD and Sinatra: https://rubyplus.com/articles/1881-Sinatra-Beyond-Basics-TDD-using-Sinatra (TO DO)
+    * TDD + Sinatra + Travis + Heroku: https://www.sitepoint.com/build-sinatra-api-using-tdd-heroku-continuous-integration-travis/ (TO DO)
 
 ## Testing
 * RSpec
@@ -73,7 +73,7 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * `bin/rspec --init`: create `.rspec` and `spec/spec_helper.rb`
     * Run the tests under folder "spec": `bin/rspec format doc`
 * Hexagonal TDD with Ruby and RSpec: https://moonmaster9000.github.io/hexagonal_tdd_in_ruby/ (DONE)
-* Dani Latorre => Testing en Invoice_Me. Cucumber, RSpec, Capybara, Selenium: (DOING)
+* Dani Latorre => Testing en Invoice_Me. Cucumber, RSpec, Capybara, Selenium: (DONE)
     * https://www.youtube.com/watch?v=iEmBIj95jdI
     * https://www.youtube.com/watch?v=8ok8q8duvYc
     * https://github.com/codingstones/invoice_me
