@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rack/test'
+require_relative '../hello'
 
 
 RSpec.describe 'hello app' do
