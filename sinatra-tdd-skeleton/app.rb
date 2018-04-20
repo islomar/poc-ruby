@@ -5,7 +5,8 @@ Factory = MyApp::Factory.new
 
 enable :sessions
 
-# Uncomment to pass the controllers tests:
+# Uncomment to pass the controllers and e2e tests:
 
-# get '/' do
-# end
+get '/' do
+    erb :index
+end

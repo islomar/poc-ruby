@@ -1,9 +1,9 @@
 module MyApp
 
-    class MyFirstAction
-        def run()
+    class HelloWorldAction
+        def run(name)
             # Uncomment the next line to pass the tests:
-            true
+            "Hello #{name}"
         end
     end
 
