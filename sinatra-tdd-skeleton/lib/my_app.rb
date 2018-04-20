@@ -1,0 +1,5 @@
+require_relative './my_app/infrastructure'
+require_relative './my_app/errors'
+require_relative './my_app/model'
+require_relative './my_app/actions'
+require_relative './my_app/factory'
