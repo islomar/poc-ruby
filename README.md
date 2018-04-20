@@ -5,6 +5,9 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * https://www.ruby-lang.org/en/
 * Better install Ruby with rbenv
     * https://cbednarski.com/articles/installing-ruby/
+* POODR:
+    * https://github.com/skmetz/poodr
+    * https://github.com/islomar/my-readings/blob/master/practical-object-oriented-design-in-ruby.md
 * Last Ruby release (15.04.2018): 2.5.1
 * The reference or original implementation of the Ruby programming language is called Matz's Ruby Interpreter, or **MRI** for short.
 * **gemspec**: http://guides.rubygems.org/specification-reference/
@@ -98,8 +101,12 @@ Time to play a little bit with Ruby and its ecosystem :-)
         * `AUTH_TOKEN=xxx ORIGIN_ACCOUNT=xxx rake features:e2e`  >> it runs with a headless Chrome
         * All the tests under `spec` use a fake Cuentica server (VCR cassettes)
         * The tests under `features` run against the real Cuentica server
+* Cucumber:
+    * Sinatra examples: https://github.com/cucumber/cucumber-ruby/blob/master/examples/sinatra/features/add.feature
+    * Ruby examples: https://github.com/bmabey/cucumber/tree/master/features
 * Capybara
     * Acceptance test framework for web applications http://teamcapybara.github.io/capybara/
+    * It gives me all the functionality for the page objects, like @context.fill_in, etc.
 * RackTest:
     * Capybara default driver: https://github.com/teamcapybara/capybara#racktest
 
