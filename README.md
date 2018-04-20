@@ -48,6 +48,10 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * For defining public instance variables: `attr_accessor :name`
 * Instantiate a class: `Greeter.new("Pat")`
 * Safe-navigation operator: `provider&.password`
+* `config.ru`
+    * rackup file, in order to simplify running the Sinatra app (or any Rack app)
+    * https://learn.co/lessons/config-ru-tutorial
+    * TBD
 * Ruby modules have two roles:
     1. Grouping similar methods together under a familiar name
     2. TBD
@@ -63,7 +67,7 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * Hello world: https://coderwall.com/p/3k1hsw/hello-world-with-sinatra (DONE)
     * TDD and Sinatra: https://rubyplus.com/articles/1881-Sinatra-Beyond-Basics-TDD-using-Sinatra (DONE)
         * http://www.virtuouscode.com/2014/07/08/zero-to-smoke-test-with-sinatra/
-    * TDD + Sinatra + Travis + Heroku: https://www.sitepoint.com/build-sinatra-api-using-tdd-heroku-continuous-integration-travis/ (TO DO)
+    * TDD + Sinatra + Travis + Heroku: https://www.sitepoint.com/build-sinatra-api-using-tdd-heroku-continuous-integration-travis/ (DONE)
 
 ## Testing
 * RSpec
