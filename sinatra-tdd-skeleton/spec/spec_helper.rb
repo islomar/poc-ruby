@@ -4,7 +4,7 @@ SimpleCov.start
 require 'my_app'
 require 'rack/test'
 
-require_relative '../app'
+require_relative '../controllers'
 
 
 def description_for(method)

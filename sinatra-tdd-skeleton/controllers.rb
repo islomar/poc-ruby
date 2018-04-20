@@ -1,6 +1,6 @@
 require 'sinatra'
 require './lib/my_app'
 
-# factory = MyApp::Factory.new
+Factory = MyApp::Factory.new
 
 enable :sessions
