@@ -80,6 +80,15 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * Set up the project for running RSpec: `rspec --init`
     * `bin/rspec --init`: create `.rspec` and `spec/spec_helper.rb`
     * Run the tests under folder "spec": `bin/rspec format doc`
+    * Add `:focus` for focusing on a test:    `it "does another thing", :focus => true do`
+    * Assert exceptions:
+        ```
+        exception = assert_raise(___) do
+            my_global_method(1,2,3)
+        end
+        assert_match(/__/, exception.message)
+        ```
+    * TBD
 * Hexagonal TDD with Ruby and RSpec: https://moonmaster9000.github.io/hexagonal_tdd_in_ruby/ (DONE)
 * Dani Latorre => Testing en Invoice_Me. Cucumber, RSpec, Capybara, Selenium: (DONE)
     * https://www.youtube.com/watch?v=iEmBIj95jdI
