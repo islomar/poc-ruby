@@ -10,3 +10,11 @@ enable :sessions
 get '/' do
     erb :index
 end
+
+get '/hello_world' do
+  'hello world'
+end
+
+get '/time' do
+  'hello world'
+end

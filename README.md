@@ -8,6 +8,8 @@ Time to play a little bit with Ruby and its ecosystem :-)
 * POODR:
     * https://github.com/skmetz/poodr
     * https://github.com/islomar/my-readings/blob/master/practical-object-oriented-design-in-ruby.md
+    * Factory (Wrapper) a a module.
+    * include <Module> for sharing role behavior
 * Last Ruby release (15.04.2018): 2.5.1
 * The reference or original implementation of the Ruby programming language is called Matz's Ruby Interpreter, or **MRI** for short.
 * **gemspec**: http://guides.rubygems.org/specification-reference/
