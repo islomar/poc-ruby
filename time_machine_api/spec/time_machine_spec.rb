@@ -31,12 +31,13 @@ describe "TimeMachineAPI" do
 
   describe "POST /time" do
     it "freezes a fake time" do
-      post('/time/my-fake-datetime', { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' })
+      any_fake_time = "any-fake-time"
+      post('/time/' + "#{any_fake_time}", { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' })
 
       expect(last_response.status).to eq 201
       expect(last_response.body).not_to be_nil
       get('/time', { 'ACCEPT' => 'application/json' })
-      expect(last_response.body).to eq "\"my-fake-datetime\""
+      expect(last_response.body).to eq "\"#{any_fake_time}\""
     end
   end
 end
