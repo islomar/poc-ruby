@@ -35,9 +35,9 @@ describe "TimeMachineAPI" do
       post('/time/' + "#{any_fake_time}", { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' })
 
       expect(last_response.status).to eq 201
-      expect(last_response.body).not_to be_nil
       get('/time', { 'ACCEPT' => 'application/json' })
-      expect(last_response.body).to eq "\"#{any_fake_time}\""
+      expected_response = {"time" => any_fake_time}
+      expect(last_response.body).to eq(expected_response.to_json)
     end
   end
 end

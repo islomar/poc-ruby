@@ -1,3 +1,5 @@
+require 'sinatra'
+
 class Factory
   def time_machine_service
     @time_machine_service ||= TimeMachineService.new()
@@ -19,8 +21,6 @@ class TimeMachineService
   end
 
 end
-require 'sinatra'
-
 
 class TimeMachineAPI < Sinatra::Base
   HEADER_CONTENT_TYPE_JSON = { "Content-Type" => "application/json" }
@@ -36,15 +36,16 @@ class TimeMachineAPI < Sinatra::Base
   end
 
   get '/time' do
-    now = time_machine_service.now
+    response = {"time" => time_machine_service.now}
 
-    [200, HEADER_CONTENT_TYPE_JSON, now.to_json]
+    [200, HEADER_CONTENT_TYPE_JSON, response.to_json]
   end
 
   post '/time/:data' do
     fake_time = params[:data]
     time_machine_service.freeze_time(fake_time)
+    response = {"time" => fake_time}
 
-    [201, HEADER_CONTENT_TYPE_JSON, fake_time.to_json]
+    [201, HEADER_CONTENT_TYPE_JSON, response.to_json]
   end
 end
