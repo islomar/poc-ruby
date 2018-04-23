@@ -10,6 +10,8 @@ def app
   TimeMachineAPI.new(time_machine_service)
 end
 
+ANY_VALID_ISO8601_TIME = "2018-04-23T16:37:01+02:00"
+
 
 describe "TimeMachineAPI" do
   describe "GET /time" do
@@ -25,15 +27,22 @@ describe "TimeMachineAPI" do
 
   describe "POST /time" do
     it "freezes a fake time" do
-      any_fake_time = "any-fake-time"
-      post('/time/' + "#{any_fake_time}", { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+      post('/time/' + ANY_VALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
 
       expect(last_response.status).to eq 201
       expect(last_response.headers['Content-Type']).to eq "application/json"
-      # assert_response_is_time_with_iso8601_format(last_response)
+      assert_response_is_time_with_iso8601_format(last_response)
       get('/time', { 'ACCEPT' => 'application/json' })
-      expected_response = {"time": any_fake_time}
+      expected_response = {"time": ANY_VALID_ISO8601_TIME}
       expect(last_response.body).to eq(expected_response.to_json)
+    end
+
+    it "returns 422 if the time to be frozen does not have ISO8601 format" do
+      any_fake_time = "any-fake-time"
+      post('/time/' + "#{any_fake_time}", { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+
+      expect(last_response.status).to eq 422
+      expect(last_response.body).to eq("The date passed must have a ISO8601 format")
     end
   end
 

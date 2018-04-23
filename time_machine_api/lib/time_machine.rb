@@ -7,6 +7,13 @@ class Factory
   end
 end
 
+class InvalidIso8601DatetimeFormatError < StandardError
+  attr_reader :messages
+
+  def initialize()
+    @messages = "The date passed must have a ISO8601 format"
+  end
+end
 
 class TimeMachineService
 
@@ -39,10 +46,23 @@ class TimeMachineAPI < Sinatra::Base
   end
 
   post '/time/:data' do
-    fake_time = params[:data]
-    time_machine_service.freeze_time(fake_time)
-    response = {"time" => fake_time}
+    begin
+      fake_time = params[:data]
+      validate(fake_time)
+      time_machine_service.freeze_time(fake_time)
+      response = {"time" => fake_time}
 
-    [201, HEADER_CONTENT_TYPE_JSON, response.to_json]
+      [201, HEADER_CONTENT_TYPE_JSON, response.to_json]
+    rescue InvalidIso8601DatetimeFormatError => ex
+      [422, ex.messages]
+    end
+  end
+
+  def validate(fake_time)
+    begin
+      Time.iso8601(fake_time)
+    rescue
+      raise InvalidIso8601DatetimeFormatError.new
+    end
   end
 end
