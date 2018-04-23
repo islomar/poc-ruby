@@ -12,6 +12,8 @@ end
 
 ANY_VALID_ISO8601_TIME = "2018-04-23T16:37:01+02:00"
 ANY_INVALID_ISO8601_TIME = "invalid-iso8601-time"
+INVALID_ISO8601_TIME_ERROR_MESSAGE = "The date passed must have a ISO8601 format"
+
 
 describe "TimeMachineAPI" do
   describe "GET /time" do
@@ -41,13 +43,13 @@ describe "TimeMachineAPI" do
       post('/time/' + ANY_INVALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
 
       expect(last_response.status).to eq 422
-      expect(last_response.body).to eq("The date passed must have a ISO8601 format")
+      expect(last_response.body).to eq(INVALID_ISO8601_TIME_ERROR_MESSAGE)
     end
   end
 
   def assert_response_is_time_with_iso8601_format(last_response)
     json_response = JSON.parse(last_response.body)
     expect(json_response.has_key?("time")).to be_truthy
-    expect{Time.iso8601(json_response["time"])}.not_to raise_error, "The time received has no ISO8601 format"
+    expect{Time.iso8601(json_response["time"])}.not_to raise_error, INVALID_ISO8601_TIME_ERROR_MESSAGE
   end
 end
