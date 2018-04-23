@@ -28,16 +28,23 @@ describe "TimeMachineAPI" do
   end
 
   describe "POST /time" do
-    it "freezes a fake time" do
-      post('/time/' + ANY_VALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+    describe "when freezing a specific time" do
+      it "returns the frozen time in the response" do
+        post('/time/' + ANY_VALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
 
-      expect(last_response.status).to eq 201
-      expect(last_response.body).not_to be_empty
-      assert_content_is_json(last_response)
-      assert_response_is_time_with_iso8601_format(last_response)
-      get('/time', { 'ACCEPT' => 'application/json' })
-      expected_response = {"time": ANY_VALID_ISO8601_TIME}
-      expect(last_response.body).to eq(expected_response.to_json)
+        expect(last_response.status).to eq 201
+        expect(last_response.body).not_to be_empty
+        assert_content_is_json(last_response)
+        assert_response_is_time_with_iso8601_format(last_response)
+      end
+
+      it "returns the frozen time when doing a GET request afterwards" do
+        post('/time/' + ANY_VALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+
+        get('/time', { 'ACCEPT' => 'application/json' })
+        expected_response = {"time": ANY_VALID_ISO8601_TIME}
+        expect(last_response.body).to eq(expected_response.to_json)
+      end
     end
 
     it "returns 422 if the time to be frozen does not have ISO8601 format" do
