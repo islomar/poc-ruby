@@ -15,3 +15,4 @@ Run `rake`
 
 ## Future improvements
 * When the app grew, I would start using a DDD approach (splitting application services, etc.) Being so simple for the moment, I don't think it's worthy.
+* Probably the time validator should be somewhere else...
