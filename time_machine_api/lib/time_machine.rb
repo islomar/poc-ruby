@@ -2,14 +2,8 @@ require 'sinatra'
 require "sinatra/json"
 
 require 'factory'
+require 'errors'
 
-class InvalidIso8601DatetimeFormatError < StandardError
-  attr_reader :messages
-
-  def initialize()
-    @messages = "The date passed must have a ISO8601 format"
-  end
-end
 
 class TimeMachineService
 

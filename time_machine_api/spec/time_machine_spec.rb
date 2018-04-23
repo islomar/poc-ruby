@@ -5,7 +5,7 @@ require 'json'
 include Rack::Test::Methods
 
 def app
-  factory = TimeMachine::Factory.new
+  factory = Factory.new
   time_machine_service = factory.time_machine_service
   TimeMachineAPI.new(time_machine_service)
 end
