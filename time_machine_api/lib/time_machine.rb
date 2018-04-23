@@ -1,11 +1,7 @@
 require 'sinatra'
 require "sinatra/json"
 
-class Factory
-  def time_machine_service
-    @time_machine_service ||= TimeMachineService.new()
-  end
-end
+require 'factory'
 
 class InvalidIso8601DatetimeFormatError < StandardError
   attr_reader :messages
