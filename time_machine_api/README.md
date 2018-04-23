@@ -2,7 +2,7 @@
 The API has the next functionality:
 * It accepts GET request to /time, returning the current time in ISO8601 format.
 * It accepts POST requet to /time, freezing the time to the one sent. From that moment on, all the GET requests will return that frozen time.
-    * The time frozen does not need to adhere to the ISO8601 format
+    * Returns 422 if the time frozen does not have ISO8601 format
 
 ## How to run the tests
 Run `rake`
