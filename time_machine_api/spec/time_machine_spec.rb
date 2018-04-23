@@ -22,7 +22,7 @@ describe "TimeMachineAPI" do
 
       expect(last_response.status).to eq 200
       expect(last_response.body).not_to be_empty
-      expect(last_response.headers['Content-Type']).to eq "application/json"
+      assert_content_is_json(last_response)
       assert_response_is_time_with_iso8601_format(last_response)
     end
   end
@@ -32,7 +32,8 @@ describe "TimeMachineAPI" do
       post('/time/' + ANY_VALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
 
       expect(last_response.status).to eq 201
-      expect(last_response.headers['Content-Type']).to eq "application/json"
+      expect(last_response.body).not_to be_empty
+      assert_content_is_json(last_response)
       assert_response_is_time_with_iso8601_format(last_response)
       get('/time', { 'ACCEPT' => 'application/json' })
       expected_response = {"time": ANY_VALID_ISO8601_TIME}
@@ -45,6 +46,10 @@ describe "TimeMachineAPI" do
       expect(last_response.status).to eq 422
       expect(last_response.body).to eq(INVALID_ISO8601_TIME_ERROR_MESSAGE)
     end
+  end
+
+  def assert_content_is_json(last_response)
+    expect(last_response.headers['Content-Type']).to eq "application/json"
   end
 
   def assert_response_is_time_with_iso8601_format(last_response)
