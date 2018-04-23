@@ -32,18 +32,9 @@ class TimeMachineAPI < Sinatra::Base
     @time_machine_service = time_machine_service
   end
 
-  get '/' do
-    logger.info "LOG: KKKKK"
-    'hello world to the root!!!!'
-  end
-
-  get '/hello_world' do
-    'hello world'
-  end
-
   get '/time' do
     response = {"time" => time_machine_service.now}
-    
+
     [200, HEADER_CONTENT_TYPE_JSON, response.to_json]
   end
 

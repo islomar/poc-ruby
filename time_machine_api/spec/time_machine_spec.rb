@@ -12,14 +12,6 @@ end
 
 
 describe "TimeMachineAPI" do
-  describe "GET /hello_world" do
-    it "returns 200" do
-      get '/hello_world'
-
-      expect(last_response.status).to eq 200
-    end
-  end
-
   describe "GET /time" do
     it "returns the time in iso8601 format" do
       get '/time', {'ACCEPT': 'application/json' }
