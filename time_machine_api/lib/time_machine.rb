@@ -43,6 +43,12 @@ class TimeMachineAPI < Sinatra::Base
     [HTTP::Status::OK, HEADER_CONTENT_TYPE_JSON, response.to_json]
   end
 
+  get '/time/:client_name' do
+    response = {"time" => time_machine_service.now}
+
+    [HTTP::Status::OK, HEADER_CONTENT_TYPE_JSON, response.to_json]
+  end
+
   post '/time/:data' do
     begin
       fake_time = params[:data]
