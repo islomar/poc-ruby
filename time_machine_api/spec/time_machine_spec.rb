@@ -49,6 +49,14 @@ describe "TimeMachineAPI" do
           assert_content_is_json(last_response)
           assert_response_contains_expected_iso8601_time(last_response, ANY_VALID_ISO8601_TIME)
         end
+
+        it "returns the client time when doing a GET request afterwards" do
+          post_json('/clock/client-1', {:time => ANY_VALID_ISO8601_TIME})
+
+          get('/clock/client-1', { 'ACCEPT' => 'application/json' })
+          expected_response = {"time": ANY_VALID_ISO8601_TIME}
+          expect(last_response.body).to eq(expected_response.to_json)
+        end
       end
 
 
