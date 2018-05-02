@@ -21,7 +21,7 @@ INVALID_ISO8601_TIME_ERROR_MESSAGE = "The date passed must have a ISO8601 format
 describe "TimeMachineAPI" do
   describe "GET /time" do
     it "returns the time in iso8601 format" do
-      get '/time', {'ACCEPT': 'application/json' }
+      get '/time', { 'ACCEPT': 'application/json' }
 
       expect(last_response.status).to eq HTTP::Status::OK
       expect(last_response.body).not_to be_empty
@@ -34,7 +34,7 @@ describe "TimeMachineAPI" do
     describe "when freezing a specific time" do
       it "returns the frozen time in the response" do
         # post_json('/time/' + ANY_VALID_ISO8601_TIME, {'time': ANY_VALID_ISO8601_TIME})
-        post_json('/time/' + ANY_VALID_ISO8601_TIME, {})
+        post_json('/time/' + ANY_VALID_ISO8601_TIME)
 
         expect(last_response.status).to eq HTTP::Status::CREATED
         expect(last_response.body).not_to be_empty
@@ -43,7 +43,7 @@ describe "TimeMachineAPI" do
       end
 
       it "returns the frozen time when doing a GET request afterwards" do
-        post_json('/time/' + ANY_VALID_ISO8601_TIME, {})
+        post_json('/time/' + ANY_VALID_ISO8601_TIME)
 
         get('/time', { 'ACCEPT' => 'application/json' })
         expected_response = {"time": ANY_VALID_ISO8601_TIME}
@@ -52,7 +52,7 @@ describe "TimeMachineAPI" do
     end
 
     it "returns 400 (Bad Request) if the time to be frozen does not have ISO8601 format" do
-      post('/time/' + ANY_INVALID_ISO8601_TIME)
+      post_json('/time/' + ANY_INVALID_ISO8601_TIME)
 
       expect(last_response.status).to eq HTTP::Status::BAD_REQUEST
       expect(last_response.body).to eq(INVALID_ISO8601_TIME_ERROR_MESSAGE)
@@ -69,7 +69,7 @@ describe "TimeMachineAPI" do
     expect{Time.iso8601(json_response["time"])}.not_to raise_error, INVALID_ISO8601_TIME_ERROR_MESSAGE
   end
 
-  def post_json(uri, json)
+  def post_json(uri, json={})
     header("Content-Type", "application/json")
     header("Accept", "application/json")
     post(uri, json.to_json)
