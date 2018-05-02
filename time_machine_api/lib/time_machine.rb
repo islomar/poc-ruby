@@ -45,15 +45,10 @@ class TimeMachineAPI < Sinatra::Base
 
   post '/time/:data' do
     begin
-      request.body.rewind
-      logger.info headers
-      logger.info ">>> BODY: " + request.body.read
-      # puts JSON.parse(request.body.read)
       fake_time = params[:data]
       validate(fake_time)
       time_machine_service.freeze_time(fake_time)
       response = {"time" => fake_time}
-
       [HTTP::Status::CREATED, HEADER_CONTENT_TYPE_JSON, response.to_json]
     rescue InvalidIso8601DatetimeFormatError => ex
       [HTTP::Status::BAD_REQUEST, ex.messages]

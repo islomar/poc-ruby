@@ -3,6 +3,7 @@ require 'time_machine'
 require 'net/http'
 require 'uri'
 require 'json'
+require 'logger'
 
 include Rack::Test::Methods
 
@@ -32,7 +33,8 @@ describe "TimeMachineAPI" do
   describe "POST /time" do
     describe "when freezing a specific time" do
       it "returns the frozen time in the response" do
-        post('/time/' + ANY_VALID_ISO8601_TIME, {'time': ANY_VALID_ISO8601_TIME}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT'=> 'application/json' })
+        # post_json('/time/' + ANY_VALID_ISO8601_TIME, {'time': ANY_VALID_ISO8601_TIME})
+        post_json('/time/' + ANY_VALID_ISO8601_TIME, {})
 
         expect(last_response.status).to eq HTTP::Status::CREATED
         expect(last_response.body).not_to be_empty
@@ -41,8 +43,7 @@ describe "TimeMachineAPI" do
       end
 
       it "returns the frozen time when doing a GET request afterwards" do
-        json_data = "{'hola': 'caracola'}"
-        post('/time/' + ANY_VALID_ISO8601_TIME, body=json_data.to_json, headers={ 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+        post_json('/time/' + ANY_VALID_ISO8601_TIME, {})
 
         get('/time', { 'ACCEPT' => 'application/json' })
         expected_response = {"time": ANY_VALID_ISO8601_TIME}
@@ -51,7 +52,7 @@ describe "TimeMachineAPI" do
     end
 
     it "returns 400 (Bad Request) if the time to be frozen does not have ISO8601 format" do
-      post('/time/' + ANY_INVALID_ISO8601_TIME, headers={ 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+      post('/time/' + ANY_INVALID_ISO8601_TIME)
 
       expect(last_response.status).to eq HTTP::Status::BAD_REQUEST
       expect(last_response.body).to eq(INVALID_ISO8601_TIME_ERROR_MESSAGE)
@@ -66,5 +67,11 @@ describe "TimeMachineAPI" do
     json_response = JSON.parse(last_response.body)
     expect(json_response.has_key?("time")).to be_truthy
     expect{Time.iso8601(json_response["time"])}.not_to raise_error, INVALID_ISO8601_TIME_ERROR_MESSAGE
+  end
+
+  def post_json(uri, json)
+    header("Content-Type", "application/json")
+    header("Accept", "application/json")
+    post(uri, json.to_json)
   end
 end
