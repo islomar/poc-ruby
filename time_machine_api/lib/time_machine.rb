@@ -1,5 +1,6 @@
 require 'sinatra'
 require "sinatra/json"
+require 'httpclient'
 
 require_relative './factory'
 require_relative './errors'
@@ -33,7 +34,7 @@ class TimeMachineAPI < Sinatra::Base
   get '/time' do
     response = {"time" => time_machine_service.now}
 
-    [200, HEADER_CONTENT_TYPE_JSON, response.to_json]
+    [HTTP::Status::OK, HEADER_CONTENT_TYPE_JSON, response.to_json]
   end
 
   post '/time/:data' do
@@ -47,9 +48,9 @@ class TimeMachineAPI < Sinatra::Base
       time_machine_service.freeze_time(fake_time)
       response = {"time" => fake_time}
 
-      [201, HEADER_CONTENT_TYPE_JSON, response.to_json]
+      [HTTP::Status::CREATED, HEADER_CONTENT_TYPE_JSON, response.to_json]
     rescue InvalidIso8601DatetimeFormatError => ex
-      [422, ex.messages]
+      [HTTP::Status::BAD_REQUEST, ex.messages]
     end
   end
 
