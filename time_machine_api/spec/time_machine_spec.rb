@@ -10,7 +10,7 @@ include Rack::Test::Methods
 ANY_VALID_ISO8601_TIME = "2018-04-23T16:37:01+02:00"
 ANY_INVALID_ISO8601_TIME = "invalid-iso8601-time"
 INVALID_ISO8601_TIME_ERROR_MESSAGE = "The date passed must have a ISO8601 format"
-
+A_NON_EXISTING_CLIENT = "a-non-existing-client"
 
 describe "TimeMachineAPI" do
 
@@ -71,9 +71,9 @@ describe "TimeMachineAPI" do
         assert_response_contains_expected_iso8601_time(last_response, ANY_VALID_ISO8601_TIME)
       end
 
-      it "returns the time in iso8601 format for a specific client" do
+      it "returns the time in iso8601 format for a non existing client" do
         allow(DateTime).to receive(:now).and_return(DateTime.parse(ANY_VALID_ISO8601_TIME))
-        get '/time/any-client-name', { 'ACCEPT': 'application/json' }
+        get '/time/' + A_NON_EXISTING_CLIENT, { 'ACCEPT': 'application/json' }
 
         expect(last_response.status).to eq HTTP::Status::OK
         expect(last_response.body).not_to be_empty
