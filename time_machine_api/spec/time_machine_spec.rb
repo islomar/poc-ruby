@@ -41,9 +41,8 @@ describe "TimeMachineAPI" do
       end
 
       describe "for a specific client" do
-        xit "returns the frozen time in the response" do
-          # post_json('/time/' + ANY_VALID_ISO8601_TIME, {'time': ANY_VALID_ISO8601_TIME})
-          post_json('/clock/' + ANY_VALID_ISO8601_TIME)
+        it "returns the frozen time in the response" do
+          post_json('/clock/any-client-name', {:time => ANY_VALID_ISO8601_TIME})
 
           expect(last_response.status).to eq HTTP::Status::CREATED
           expect(last_response.body).not_to be_empty

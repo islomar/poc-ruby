@@ -61,6 +61,19 @@ class TimeMachineAPI < Sinatra::Base
     end
   end
 
+  post '/clock/:client_name' do
+    begin
+      body = JSON.parse(request.body.read)
+      fake_time = body["time"]
+      validate(fake_time)
+      time_machine_service.freeze_time(fake_time)
+      response = {"time" => fake_time}
+      [HTTP::Status::CREATED, HEADER_CONTENT_TYPE_JSON, response.to_json]
+    rescue InvalidIso8601DatetimeFormatError => ex
+      [HTTP::Status::BAD_REQUEST, ex.messages]
+    end
+  end
+
   def validate(fake_time)
     begin
       Time.iso8601(fake_time)
