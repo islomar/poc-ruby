@@ -40,15 +40,17 @@ describe "TimeMachineAPI" do
         expect(last_response.body).to eq(expected_response.to_json)
       end
 
-      # it "returns the frozen time in the response" do
-      #   # post_json('/time/' + ANY_VALID_ISO8601_TIME, {'time': ANY_VALID_ISO8601_TIME})
-      #   post_json('/time/customer/<customer_id>' + ANY_VALID_ISO8601_TIME)
+      describe "for a specific client" do
+        xit "returns the frozen time in the response" do
+          # post_json('/time/' + ANY_VALID_ISO8601_TIME, {'time': ANY_VALID_ISO8601_TIME})
+          post_json('/clock/' + ANY_VALID_ISO8601_TIME)
 
-      #   expect(last_response.status).to eq HTTP::Status::CREATED
-      #   expect(last_response.body).not_to be_empty
-      #   assert_content_is_json(last_response)
-      #   assert_response_contains_expected_iso8601_time(last_response, ANY_VALID_ISO8601_TIME)
-      # end
+          expect(last_response.status).to eq HTTP::Status::CREATED
+          expect(last_response.body).not_to be_empty
+          assert_content_is_json(last_response)
+          assert_response_contains_expected_iso8601_time(last_response, ANY_VALID_ISO8601_TIME)
+        end
+      end
 
 
     end
@@ -73,7 +75,7 @@ describe "TimeMachineAPI" do
 
       it "returns the time in iso8601 format for a non existing client" do
         allow(DateTime).to receive(:now).and_return(DateTime.parse(ANY_VALID_ISO8601_TIME))
-        get '/time/' + A_NON_EXISTING_CLIENT, { 'ACCEPT': 'application/json' }
+        get '/clock/' + A_NON_EXISTING_CLIENT, { 'ACCEPT': 'application/json' }
 
         expect(last_response.status).to eq HTTP::Status::OK
         expect(last_response.body).not_to be_empty
