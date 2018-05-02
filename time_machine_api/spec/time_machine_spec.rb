@@ -21,12 +21,13 @@ INVALID_ISO8601_TIME_ERROR_MESSAGE = "The date passed must have a ISO8601 format
 describe "TimeMachineAPI" do
   describe "GET /time" do
     it "returns the time in iso8601 format" do
+      allow(DateTime).to receive(:now).and_return(DateTime.parse(ANY_VALID_ISO8601_TIME))
       get '/time', { 'ACCEPT': 'application/json' }
 
       expect(last_response.status).to eq HTTP::Status::OK
       expect(last_response.body).not_to be_empty
       assert_content_is_json(last_response)
-      assert_response_is_time_with_iso8601_format(last_response)
+      assert_response_contains_expected_iso8601_time(last_response, ANY_VALID_ISO8601_TIME)
     end
   end
 
@@ -39,7 +40,7 @@ describe "TimeMachineAPI" do
         expect(last_response.status).to eq HTTP::Status::CREATED
         expect(last_response.body).not_to be_empty
         assert_content_is_json(last_response)
-        assert_response_is_time_with_iso8601_format(last_response)
+        assert_response_contains_expected_iso8601_time(last_response, ANY_VALID_ISO8601_TIME)
       end
 
       it "returns the frozen time when doing a GET request afterwards" do
@@ -63,9 +64,9 @@ describe "TimeMachineAPI" do
     expect(last_response.headers['Content-Type']).to eq "application/json"
   end
 
-  def assert_response_is_time_with_iso8601_format(last_response)
+  def assert_response_contains_expected_iso8601_time(last_response, expected_time)
     json_response = JSON.parse(last_response.body)
-    expect(json_response.has_key?("time")).to be_truthy
+    expect(json_response).to eq({"time" => expected_time})
     expect{Time.iso8601(json_response["time"])}.not_to raise_error, INVALID_ISO8601_TIME_ERROR_MESSAGE
   end
 
