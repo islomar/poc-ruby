@@ -1,6 +1,7 @@
 require 'sinatra'
 require "sinatra/json"
 require 'httpclient'
+require 'logger'
 
 require_relative './factory'
 require_relative './errors'
@@ -22,6 +23,11 @@ class TimeMachineService
 end
 
 class TimeMachineAPI < Sinatra::Base
+  configure :production, :development do
+    enable :logging
+  end
+
+
   HEADER_CONTENT_TYPE_JSON = { "Content-Type" => "application/json" }
 
   attr_reader :time_machine_service
@@ -40,8 +46,8 @@ class TimeMachineAPI < Sinatra::Base
   post '/time/:data' do
     begin
       request.body.rewind
-      # puts headers
-      # puts ">>>" + request.body.read
+      logger.info headers
+      logger.info ">>> BODY: " + request.body.read
       # puts JSON.parse(request.body.read)
       fake_time = params[:data]
       validate(fake_time)

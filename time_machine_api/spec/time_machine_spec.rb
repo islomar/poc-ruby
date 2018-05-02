@@ -32,7 +32,7 @@ describe "TimeMachineAPI" do
   describe "POST /time" do
     describe "when freezing a specific time" do
       it "returns the frozen time in the response" do
-        post('/time/' + ANY_VALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+        post('/time/' + ANY_VALID_ISO8601_TIME, {'time': ANY_VALID_ISO8601_TIME}, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT'=> 'application/json' })
 
         expect(last_response.status).to eq HTTP::Status::CREATED
         expect(last_response.body).not_to be_empty

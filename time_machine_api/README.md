@@ -14,8 +14,8 @@ Run `rake`
 * You can check everything works through curl:
     * GET: `curl -X GET -i -H "Accept: application/json" "http://localhost:9292/time"`
     * POST:
-        * `curl -X POST -i -H "Accept: application/json" "http://localhost:9292/time/<iso8601-fake-time>" -d ""`,
-        * e.g. `curl -X POST -i -H "Accept: application/json" "http://localhost:9292/time/2018-05-02T12:07:04+02:00" -d ""`
+        * `curl -X POST -i -H "Accept: application/json" -H "Content-Type: application/json" "http://localhost:9292/time/<iso8601-fake-time>" -d ""`,
+        * e.g. `curl -X POST -i -H "Accept: application/json" -H "Content-Type: application/json" "http://localhost:9292/time/2018-05-02T12:07:04+02:00" -d ""`
 
 
 
