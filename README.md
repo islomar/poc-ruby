@@ -73,6 +73,7 @@ Time to play a little bit with Ruby and its ecosystem :-)
     * TDD and Sinatra: https://rubyplus.com/articles/1881-Sinatra-Beyond-Basics-TDD-using-Sinatra (DONE)
         * http://www.virtuouscode.com/2014/07/08/zero-to-smoke-test-with-sinatra/
     * TDD + Sinatra + Travis + Heroku: https://www.sitepoint.com/build-sinatra-api-using-tdd-heroku-continuous-integration-travis/ (DONE)
+    * https://www.sitepoint.com/build-a-sinatra-mvc-framework/
 
 ## Testing
 * RSpec

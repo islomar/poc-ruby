@@ -1,5 +1,7 @@
 require 'rack/test'
 require 'time_machine'
+require 'net/http'
+require 'uri'
 require 'json'
 
 include Rack::Test::Methods
@@ -39,7 +41,8 @@ describe "TimeMachineAPI" do
       end
 
       it "returns the frozen time when doing a GET request afterwards" do
-        post('/time/' + ANY_VALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+        json_data = "{'hola': 'caracola'}"
+        post('/time/' + ANY_VALID_ISO8601_TIME, body=json_data.to_json, headers={ 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
 
         get('/time', { 'ACCEPT' => 'application/json' })
         expected_response = {"time": ANY_VALID_ISO8601_TIME}
@@ -48,7 +51,7 @@ describe "TimeMachineAPI" do
     end
 
     it "returns 422 if the time to be frozen does not have ISO8601 format" do
-      post('/time/' + ANY_INVALID_ISO8601_TIME, { 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
+      post('/time/' + ANY_INVALID_ISO8601_TIME, headers={ 'CONTENT_TYPE': 'application/json', 'ACCEPT': 'application/json' })
 
       expect(last_response.status).to eq 422
       expect(last_response.body).to eq(INVALID_ISO8601_TIME_ERROR_MESSAGE)

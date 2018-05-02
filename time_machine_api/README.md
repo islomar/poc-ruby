@@ -13,6 +13,11 @@ Run `rake`
     * GET: `curl -X GET -i -H "Accept: application/json" "http://localhost:9292/time"`
     * POST: `curl -X POST -i -H "Accept: application/json" "http://localhost:9292/time/my-fake-time"`
 
+
+## Current issues
+For some reason, when the application starts up, it doesn't answer to the requests (I'm getting a 404 all the time)...
+
+
 ## Future improvements
-* When the app grew, I would start using a DDD approach (splitting application services, etc.) Being so simple for the moment, I don't think it's worthy.
+* In case the app grew, I would start using a DDD approach (splitting application services, etc.) Being so simple for the moment, I don't think it's worthy.
 * Probably the time validator should be somewhere else...

@@ -1,8 +1,8 @@
 require 'sinatra'
 require "sinatra/json"
 
-require 'factory'
-require 'errors'
+require_relative './factory'
+require_relative './errors'
 
 
 class TimeMachineService
@@ -26,6 +26,7 @@ class TimeMachineAPI < Sinatra::Base
   attr_reader :time_machine_service
 
   def initialize(time_machine_service)
+    super()
     @time_machine_service = time_machine_service
   end
 
@@ -37,6 +38,10 @@ class TimeMachineAPI < Sinatra::Base
 
   post '/time/:data' do
     begin
+      request.body.rewind
+      # puts headers
+      # puts ">>>" + request.body.read
+      # puts JSON.parse(request.body.read)
       fake_time = params[:data]
       validate(fake_time)
       time_machine_service.freeze_time(fake_time)
