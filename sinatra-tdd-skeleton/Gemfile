@@ -6,9 +6,9 @@ group :test, :development do
   gem "rspec"
   gem 'rack-test'
   gem 'cucumber'
-  gem 'capybara'
+  gem 'capybara', '>= 2.17.0'
   gem 'selenium-webdriver'
-  gem 'webrat'
+  gem 'webrat', '>= 0.7.3'
   gem 'simplecov', require: false
   gem 'rake'
 end
