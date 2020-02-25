@@ -34,7 +34,7 @@ GEM
       rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
-    rake (12.3.1)
+    rake (13.0.1)
     sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -60,7 +60,7 @@ PLATFORMS
 DEPENDENCIES
   json
   rack-test
-  rake
+  rake (>= 12.3.3)
   sinatra
   travis
 
@@ -68,4 +68,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.17.3
