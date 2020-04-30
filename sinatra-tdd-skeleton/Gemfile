@@ -9,6 +9,6 @@ group :test, :development do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webrat'
-  gem 'simplecov', require: false
+  gem 'simplecov', '>= 0.16.1', require: false
   gem 'rake'
 end
