@@ -2,5 +2,5 @@ source "http://rubygems.org"
 
 gem 'rake'
 
-gem 'json'
+gem 'json', '>= 2.3.0'
 gem 'sinatra', require: 'sinatra'
