@@ -3,4 +3,4 @@ source "http://rubygems.org"
 gem 'rake'
 
 gem 'json'
-gem 'sinatra', require: 'sinatra'
+gem 'sinatra', '>= 2.0.1', require: 'sinatra'
