@@ -23,24 +23,26 @@ GEM
       addressable (~> 2.3)
     multi_json (1.13.1)
     multipart-post (2.0.0)
-    mustermann (1.0.2)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
-    rack (2.0.4)
-    rack-protection (2.0.1)
+    rack (2.2.3)
+    rack-protection (2.0.8.1)
       rack
-    rack-test (1.0.0)
+    rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (12.3.1)
-    sinatra (2.0.1)
+    ruby2_keywords (0.0.2)
+    sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.1)
+      rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
-    tilt (2.0.8)
+    tilt (2.0.10)
     travis (1.8.8)
       backports
       faraday (~> 0.9)
@@ -59,13 +61,13 @@ PLATFORMS
 
 DEPENDENCIES
   json
-  rack-test
+  rack-test (>= 1.0.0)
   rake
-  sinatra
+  sinatra (>= 2.0.1)
   travis
 
 RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.17.3
