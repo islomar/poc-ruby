@@ -6,7 +6,7 @@ gem "sinatra"
 gem "json"
 
 group :test do
-  gem "travis"
+  gem "travis", ">= 1.8.8"
   gem "rack-test"
   gem "rake"
 end
